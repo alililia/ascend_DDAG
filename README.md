@@ -283,64 +283,61 @@ FC_att:   Rank-1: 57.42% | Rank-5: 82.59% | Rank-10: 90.91%| Rank-20: 96.17%| mA
 
 ### Training Performance
 
-| Parameters                 | Ascend 910                                                   | (RTX Titan) |
-| -------------------------- | ------------------------------------------------------------ | ----------------------------------------------|
-| Model Version              | DDAG + baseline(modified resnet50*) + Part Attention + Graph Attention | DDAG + baseline (modified resnet50) + Part Attention + Graph Attention |
-| Resource                   | Ascend 910; CPU 2.60GHz, 192cores; Memory 755G; OS Euler2.8  |  NVIDIA RTX Titan-24G        |
-| uploaded Date              | 12/10/2021 (month/day/year)                      | 12/10/2021 (month/day/year)           |
-| MindSpore Version          | 1.3.0, 1.5.0                                             | 1.3.0, 1.5.0                                  |
-| Dataset                    | SYSU-MM01, RegDB                              | SYSU-MM01, RegDB           |
-| Training Parameters（SYSU-MM01） | Epochs=40, steps per epoch=695, batch_size = 64 | epoch=40, steps per epoch=64 batch_size = 64 |
-| Training Parameters（RegDB） | Epochs=80, steps per epoch=695, batch_size = 64 | epoch=80, steps per epoch=64 batch_size = 64 |
-| Optimizer                  | Adam                                                 | Adam                                  |
-| Loss Function              | Softmax Cross Entropy + Triplet Loss                         | Softmax Cross Entropy + Triplet Loss          |
-| outputs                    | feature vector + probability                              | feature vector + probability               |
-| Loss                       | 0.2121                                           |  0.2208              |
-| Speed                      | 660 ms/step（1pcs, Graph Mode）                           | 250ms/step（1pcs, Graph Mode）       |
-| Total time                 | About 5h                                              | About                          |
-| Parameters (M)             | 122.7                                           | 122.7                                 |
-| Checkpoint for Fine tuning | 197M (.ckpt file)                                          | 196 (.ckpt file)                          |
-| Scripts                    | [link](https://gitee.com/mindspore/models/tree/master/research/cv/DDAG) ||
-
+| Parameters                 | Ascend 910                                                   | 
+| -------------------------- | ------------------------------------------------------------ | 
+| Model Version              | DDAG + baseline(modified resnet50*) + Part Attention + Graph Attention | 
+| Resource                   | Ascend 910; CPU 2.60GHz, 192cores; Memory 755G; OS Euler2.8  | 
+| uploaded Date              | 12/10/2021 (month/day/year)                      | 
+| MindSpore Version          | 1.3.0, 1.5.0                                             | 
+| Dataset                    | SYSU-MM01, RegDB                              | 
+| Training Parameters（SYSU-MM01） | Epochs=40, steps per epoch=695, batch_size = 64 | 
+| Training Parameters（RegDB） | Epochs=80, steps per epoch=695, batch_size = 64 | 
+| Optimizer                  | Adam                                                 | 
+| Loss Function              | Softmax Cross Entropy + Triplet Loss                         | 
+| outputs                    | feature vector + probability                              | 
+| Loss                       | 0.2121                                           |  
+| Speed                      | 660 ms/step（1pcs, Graph Mode）                           | 
+| Total time                 | About 5h                                              | 
+| Parameters (M)             | 122.7                                           | 
+| Checkpoint for Fine tuning | 197M (.ckpt file)                                          | 
 *Note: Modified resnet-50 incorporates a modal-specific first layer. For more details, please read the [original paper](https://arxiv.org/pdf/2007.09314.pdf)  or original [pytorch implementation](https://github.com/mangye16/DDAG).
 
 ### Inference Performance
 
-| Parameters        | Ascend                                  | (RTX Titan)                          |
-| ----------------- | --------------------------------------- | --------------------------------------- |
-| Model Version     | DDAG + Part Attention + Graph Attention | DDAG + Part Attention + Graph Attention |
-| Resource          | Ascend 910; OS Euler2.8                 | NVIDIA RTX Titan-24G                    |
-| Uploaded Date     | 12/10/2021 (month/day/year)             | 12/10/2021 (month/day/year)             |
-| MindSpore Version | 1.5.0, 1.3.0                            | 1.5.0, 1.3.0                            |
-| Dataset           | SYSU-MM01, RegDB                        | SYSU-MM01, RegDB                        |
-| batch_size        | 64                                      |                                         |
-| outputs           | feature                                 |                                         |
-| Accuracy          | See following 4 tables ↓                |                                         |
+| Parameters        | Ascend                                  | 
+| ----------------- | --------------------------------------- | 
+| Model Version     | DDAG + Part Attention + Graph Attention | 
+| Resource          | Ascend 910; OS Euler2.8                 | 
+| Uploaded Date     | 12/10/2021 (month/day/year)             |
+| MindSpore Version | 1.5.0, 1.3.0                            |
+| Dataset           | SYSU-MM01, RegDB                        | 
+| batch_size        | 64                                      |                                       
+| outputs           | feature                                 |                                         
+| Accuracy          | See following 4 tables ↓                |                                         
 
 ### SYSU-MM01 (all-search mode)
 
-| Metric | Value(Pytorch) | Value(Mindspore, ) |
+| Metric | Value(Pytorch) | Value(Mindspore ) |
 | :----: | :------------: | :-------------------: |
 | Rank-1 |     54.75%     |        54.93%         |
 |  mAP   |     53.02%     |        53.54%         |
 
 ### SYSU-MM01 (indoor-search mode)
 
-| Metric | Value(Pytorch) | Value(Mindspore, ) |
 | :----: | :------------: | :-------------------: |
 | Rank-1 |     61.02%     |        59.60%         |
 |  mAP   |     65.89%     |        66.39%         |
 
 ### RegDB(visible-infrared)
 
-| Metric | Value(Pytorch) | Value(Mindspore, , --trial 1) |
+| Metric | Value(Pytorch) | Value(Mindspore,  --trial 1) |
 | :----: | :------------: | :------------------------------: |
 | Rank-1 |     69.34%     |              68.93%              |
 |  mAP   |     63.32%     |              62.67%              |
 
 ### RegDB(infrared-visible)
 
-| Metric | Value(Pytorch) | Value(Mindspore, , --trial 1) |
+| Metric | Value(Pytorch) | Value(Mindspore,  --trial 1) |
 | :----: | :------------: | :------------------------------: |
 | Rank-1 |     68.06%     |              68.45%              |
 |  mAP   |     62.67%     |              63.23%              |
