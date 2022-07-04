@@ -60,7 +60,7 @@ Then you can set `--data-path Your own path/dataset/sysu` or `--data-path Your o
 * Hardware
    * Support Ascend and  environment.
    * For Ascend: Ascend 910.
-   * For : cuda==10.1.
+   
 * Framework
    * Mindspore=1.5.0(See [Installation](https://www.mindspore.cn/install/))
 - Third Package
@@ -72,14 +72,7 @@ Then you can set `--data-path Your own path/dataset/sysu` or `--data-path Your o
 *Note: these third party package are not stricted a specific version. For more details, please see `requriements.txt`.
 
 ## Quick Start
-For :
 
-```shell
-cd DDAG_mindspore/scripts/ # please enter this path before bash XXX.sh, otherwise path errors :)
-bash run_standalone_train_sysu_all_.sh
-```
-
-or
 
 For Ascend:
 
@@ -209,11 +202,7 @@ For more detailed and comprehensive arguments description, please refer to `trai
 
 ### Training Process
 
-For :
-
-```shell
-cd DDAG_mindspore/scripts/run_standalone_ # please enter this path before bash XXX.sh, otherwise path errors :)
-bash train_sysu_all_part_graph.sh
+ train_sysu_all_part_graph.sh
 ```
 
 For Ascend：
@@ -252,12 +241,7 @@ Note: DDAG Graph module is not used in testing/inference mode.  If using part at
 
 ### Evaluation Process
 
-For ：
 
-```shell
-cd DDAG_mindspore/scripts/run_eval_ # please enter this path before bash XXX.sh, otherwise path errors :)
-bash test_sysu_all_part_graph.sh
-```
 
 For Ascend:
 
@@ -315,32 +299,6 @@ FC_att:   Rank-1: 57.42% | Rank-5: 82.59% | Rank-10: 90.91%| Rank-20: 96.17%| mA
 | outputs           | feature                                 |                                         
 | Accuracy          | See following 4 tables ↓                |                                         
 
-### SYSU-MM01 (all-search mode)
-
-| Metric | Value(Pytorch) | Value(Mindspore ) |
-| :----: | :------------: | :-------------------: |
-| Rank-1 |     54.75%     |        54.93%         |
-|  mAP   |     53.02%     |        53.54%         |
-
-### SYSU-MM01 (indoor-search mode)
-
-| :----: | :------------: | :-------------------: |
-| Rank-1 |     61.02%     |        59.60%         |
-|  mAP   |     65.89%     |        66.39%         |
-
-### RegDB(visible-infrared)
-
-| Metric | Value(Pytorch) | Value(Mindspore,  --trial 1) |
-| :----: | :------------: | :------------------------------: |
-| Rank-1 |     69.34%     |              68.93%              |
-|  mAP   |     63.32%     |              62.67%              |
-
-### RegDB(infrared-visible)
-
-| Metric | Value(Pytorch) | Value(Mindspore,  --trial 1) |
-| :----: | :------------: | :------------------------------: |
-| Rank-1 |     68.06%     |              68.45%              |
-|  mAP   |     62.67%     |              63.23%              |
 
 ***Note**: The aforementioned pytorch results can be seen in original [pytorch repo](https://github.com/mangye16/DDAG).
 
